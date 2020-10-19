@@ -1,6 +1,7 @@
 Username: Admin
 Password: Password
 
+website: https://myschoolprojectl2.000webhostapp.com/
 Since I'm using a free webhosting you cant add too large mp4 files to upload, I've added a 1 secound one just so you can see that it works.
 
 added user cases:
