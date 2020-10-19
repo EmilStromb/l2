@@ -9,7 +9,7 @@ class NavController {
     public function showView(LoginView $v, DateTimeView $dtv, LayoutView $lv, VideosView $vv, VideoController $vc, WatchController $wc) {
         // https://www.000webhost.com/forum/t/how-to-connect-to-database-using-php/42093 using phpmyadmin
         // https://www.youtube.com/watch?v=PtEb8Rpr_TQ&ab_channel=InfoHifi
-        $this->con = mysqli_connect('localhost','root','','vuad');
+        $this->con = mysqli_connect('localhost','id14880337_assigment3','v6un$#8sUS[4X_(r','id14880337_myadmin');
         // Upload a video.
         if (isset($_POST['LayoutView::upload'])) 
         {

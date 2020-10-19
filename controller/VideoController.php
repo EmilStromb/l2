@@ -3,7 +3,6 @@
 class VideoController {
     
     public function addVideo($con) {
-        // connect to localhost sql
         $name = $_FILES['file']['name'];
         $tmp = $_FILES['file']['tmp_name'];
         
