@@ -6,6 +6,7 @@ require_once('view/LoginView.php');
 require_once('view/DateTimeView.php');
 require_once('view/LayoutView.php');
 require_once('view/VideosView.php');
+require_once('model/VideoModel.php');
 require_once('controller/Navigation.php');
 require_once('controller/VideoController.php');
 require_once('controller/WatchController.php');
@@ -22,9 +23,9 @@ $dtv = new DateTimeView();
 $lv = new LayoutView();
 $wc = new WatchController();
 $vc = new VideoController();
+$vm = new Video();
 
-
-$n = new NavController();
+$n = new NavController($vm);
 
 $n->showView($v, $dtv, $lv, $vv, $vc, $wc);
 

@@ -5,16 +5,22 @@
 class NavController {
     private $res;
     private $con;
+    private $videoModel;
+
+    public function __construct(video $vm)  {
+        $this->videoModel = $vm;
+	}
     
     public function showView(LoginView $v, DateTimeView $dtv, LayoutView $lv, VideosView $vv, VideoController $vc, WatchController $wc) {
         // https://www.000webhost.com/forum/t/how-to-connect-to-database-using-php/42093 using phpmyadmin
         // https://www.youtube.com/watch?v=PtEb8Rpr_TQ&ab_channel=InfoHifi
-        $this->con = mysqli_connect('localhost','id14880337_assigment3','v6un$#8sUS[4X_(r','id14880337_myadmin');
+        $this->con = mysqli_connect('localhost','root','','id14880337_myadmin');
         // Upload a video.
         if (isset($_POST['LayoutView::upload'])) 
         {
             $lv->render(true, $v, $dtv);
-            $this->res = $vc->addVideo($this->con);
+            $this->res = $vc->addVideo($this->con, $this->videoModel);
+            header("Location: http://localhost/l2/index.php");
         // Show all Videos.
         } 
         else if (isset($_POST['LayoutView::video'])) 

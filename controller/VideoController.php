@@ -2,10 +2,13 @@
 
 class VideoController {
     
-    public function addVideo($con) {
-        $name = $_FILES['file']['name'];
-        $tmp = $_FILES['file']['tmp_name'];
+    public function addVideo($con, video $videoModel) {
+        $videoModel->setVideoName($_FILES['file']['name']);
+        $videoModel->setfileLink($_FILES['file']['tmp_name']);
         
+        $name = $videoModel->getVideoName();
+        $tmp = $videoModel->getfileLink();
+
         //take video and move it to videos file
         move_uploaded_file($tmp, "videos/".$name);
 
