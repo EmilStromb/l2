@@ -1,12 +1,8 @@
 Username: Admin
 Password: Password
 
-error message 'post bytes exceeds the limit of 41943040 bytes'
-solution: 
-I searched to find and fix a problem with to large files, could only find this one 
-https://www.gomahamaya.com/warning-post-content-length-exceeds-limit/
-But since this is only for me currently you need to do the same thing. 
-This would be avoided if not using an open source sqlDatabase and would then not present a error message like this.
+website: https://myschoolprojectl2.000webhostapp.com/
+Since I'm using a free webhosting you cant add too large mp4 files to upload, I've added a 1 secound one just so you can see that it works.
 
 added user cases:
 
