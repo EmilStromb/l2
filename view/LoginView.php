@@ -60,17 +60,17 @@ class LoginView
 			    $password = "Password";
 
 			    // Check if username has been inputted
-		    	if($this->getRequestUserName() == '') 
+		    	if($this->getRequestBtn("name") == '') 
 			    {
 			     	$_SESSION['Message'] = "Username is missing";
 			    } 
 			    // Check if password has been inputted
-				else if ($this->getRequestPassword() == '') 
+				else if ($this->getRequestBtn("password") == '') 
 				{
 					$_SESSION['Message'] = "Password is missing";
 				}
 				// check if username and password matches
-				else if ($password == $this->getRequestPassword() && $username == $this->getRequestUserName()) 
+				else if ($password == $this->getRequestBtn("password") && $username == $this->getRequestBtn("name")) 
 				{
 				    $_SESSION['LoggedIn'] = true;
 				    $_SESSION['Message'] = "Welcome";
@@ -123,7 +123,7 @@ class LoginView
 					<p id="' . self::$messageId . '">' . $_SESSION['Message'] . '</p>
 					
 					<label for="' . self::$name . '">Username :</label>
-					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="' . $this->getName() . '" />
+					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="' . $this->getRequestBtn("login") . '" />
 
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
@@ -136,27 +136,31 @@ class LoginView
 			</form>
 		';
 	}
-	
-	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLESS
-	private function getRequestUserName() 
+
+	public function getIssetBtn($btnType) 
 	{
-		$name = self::$name;
-		//RETURN REQUEST VARIABLE: USERNAME
-		if(isset($_POST[$name])) {
-			return $_POST[$name];
-		}
+	    if ($btnType == "login") {
+			$btnType = self::$login;
+		  } else if ($btnType == "logout") {
+			$btnType = self::$logout;
+		  } else if ($btnType == "password") {
+			$btnType = self::$password;
+		  } else if ($btnType == "name") {
+			$btnType = self::$name;
+		  }
+	  
+		  return isset($_POST[$btnType]);
 	}
-	
-	private function getRequestPassword() 
+  
+  public function getRequestBtn($btnType) 
 	{
-		$password = self::$password;
-		//RETURN REQUEST VARIABLE: USERNAME
-		if(isset($_POST[$password])) {
-			return $_POST[$password];
-		}
-	}
-	private function getName() 
-	{
-		return $this->getRequestUserName();
+		if ($btnType == "password") {
+			$btnType = self::$password;
+		  } else if ($btnType == "name") {
+			$btnType = self::$name;
+		  } 
+          if(isset($_POST[$btnType])) {
+            return $_POST[$btnType];
+          }
 	}
 }

@@ -26,4 +26,20 @@ class VideosView {
         <input type="submit" name="'. self::$video . '" value="' . $name . '"/>
         </form>';
     }
+
+    public function getIssetBtn() 
+	{
+      $btnType = self::$video;
+      return isset($_POST[$btnType]);
+      
+  }
+  
+  public function getRequestBtn() 
+	{
+      $btnType = self::$video;
+
+      if(isset($_POST[$btnType])) {
+        return $_POST[$btnType];
+      }
+	}
 }

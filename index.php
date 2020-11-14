@@ -6,10 +6,10 @@ require_once('view/LoginView.php');
 require_once('view/DateTimeView.php');
 require_once('view/LayoutView.php');
 require_once('view/VideosView.php');
+require_once('view/WatchView.php');
+require_once('model/VideoArchiveDAL.php');
 require_once('model/VideoModel.php');
 require_once('controller/Navigation.php');
-require_once('controller/VideoController.php');
-require_once('controller/WatchController.php');
 
 
 //MAKE SURE ERRORS ARE SHOWN... MIGHT WANT TO TURN THIS OFF ON A PUBLIC SERVER
@@ -21,12 +21,12 @@ $v = new LoginView();
 $vv = new VideosView();
 $dtv = new DateTimeView();
 $lv = new LayoutView();
-$wc = new WatchController();
-$vc = new VideoController();
+$wv = new WatchView();
 $vm = new Video();
+$vad = new VideoArchiveDAL();
 
-$n = new NavController($vm);
+$n = new NavController($vm, $vad);
 
-$n->showView($v, $dtv, $lv, $vv, $vc, $wc);
+$n->showView($v, $dtv, $lv, $vv, $wv);
 
 

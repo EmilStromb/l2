@@ -6,41 +6,39 @@ class Video {
     private $fileLink;
 
 	public function setVideoName(string $videoName) {
-        $validation = $this->checkFileType($videoName);
-        if ($validation = false) {
-            throw new WrongFileTypeException();
+        if ($this->checkFileType($videoName)) {
+             $this->videoName = $videoName;
         } else {
-        $this->videoName = $videoName;
-        $this->setVideoUploadDate();
+             throw new \Exception("The file $videoName is not of file type .mkv or .mp4");
       }
 	}
 
 	public function getVideoName() {
 		return $this->videoName;
     }
-    public function getVideoUploadDate() {
+  public function getVideoUploadDate() {
 		return $this->uploadDate;
     }
 
-    public function setfileLink(string $fileLink) {
-		$this->uploadDate = $fileLink;
+  public function setfileLink(string $fileLink) {
+		$this->fileLink = $fileLink;
 	}
 
-    public function getfileLink() {
-		return $this->uploadDate;
-    }
+  public function getfileLink() {
+		return $this->fileLink;
+  }
 
-    public function setVideoUploadDate() {
-		$this->uploadDate = date("Y-m-d H:i:s");
-	}
+  public function setVideoUploadDate(string $date) {
+		$this->uploadDate = $date;
+  }
 
-    public static function checkFileType(string $videoName) : bool {
-        $fileType = explode(".",$videoName);
-        if ($fileType[1] == "mp4" || $fileType[1] == "mkv")
-           {
-              return true;
-           } else {
-               return false;
-           }
+  public static function checkFileType(string $videoName) {
+      $fileType = explode(".",$videoName);
+      if (end($fileType) == "mp4" || end($fileType) == "mkv")
+         {
+            return true;
+         } else {
+              return false;
+         }
     }
 }

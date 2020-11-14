@@ -61,4 +61,25 @@ class LayoutView {
       return '';
     }
   }
+
+  public function getIssetBtn($btnType) 
+	{
+    if ($btnType == "video") {
+      $btnType = self::$video;
+    } else if ($btnType == "upload") {
+      $btnType = self::$upload;
+    }
+
+    return isset($_POST[$btnType]);
+      
+  }
+  
+  public function getRequestBtn() 
+	{
+      $btnType = self::$video;
+
+      if(isset($_POST[$btnType])) {
+        return $_POST[$btnType];
+      }
+	}
 }
